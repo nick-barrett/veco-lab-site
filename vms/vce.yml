@@ -7,7 +7,7 @@ metadata:
     vmoperator.vmware.com/image-supported-check: disable
 spec:
   className: guaranteed-small
-  imageName: 192.168.60.85:9000/edge-5.4-bios.ova
+  imageName: 192.168.60.85:9000/edge-5.4-kvm.ova
   powerState: poweredOn
   networkInterfaces:
   - networkName: "VM Network"
