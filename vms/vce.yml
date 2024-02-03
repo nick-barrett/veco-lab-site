@@ -14,16 +14,22 @@ spec:
   - networkName: "VM Network"
   - networkName: "VM Network"
   vmMetadata:
-    configMapName: vce-ovfprops
-    transport: OvfEnv
+    configMapName: vce-props
+    transport: CloudInit
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-    name: vce-ovfprops
+    name: vce-props
     namespace: default
 data:
-  password: "passw0rd"
-  velocloud.vce.activation_code: "DGXU-R28P-XZ2L-4C5Z"
-  velocloud.vce.vco: "vco12-usvi1.velocloud.net"
-  velocloud.vce.vco_ignore_cert_errors: "true"
+  user-data: |
+    #cloud-config
+    password: passw0rd
+    chpasswd: { expire: False }
+    ssh_pwauth: True
+    velocloud:
+      vce:
+        vco: vco12-usvi1.velocloud.net
+        activation_code: DGXU-R28P-XZ2L-4C5Z
+        vco_ignore_cert_errors: true
