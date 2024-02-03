@@ -1,7 +1,7 @@
-apiVersion: vmoperator.vmware.com/v1alpha1
+apiVersion: vmoperator.vmware.com/v1alpha2
 kind: VirtualMachine
 metadata:
-  name: new-vce-vm
+  name: vce-vm
   namespace: default
   annotations:
     vmoperator.vmware.com/image-supported-check: disable
@@ -9,19 +9,13 @@ spec:
   className: guaranteed-small
   imageName: 192.168.60.85:9000/edge-VC_VMDK-x86_64-5.4.0.0-99130387-R5400-20231230-GA-134893-3c6e4f5c0f-updatable-ext4.ova
   powerState: poweredOn
-  networkInterfaces:
-  - networkName: "Dummy Network"
-    ethernetCardType: "vmxnet3"
-  - networkName: "Dummy Network"
-    ethernetCardType: "vmxnet3"
-  - networkName: "VM Network"
-    ethernetCardType: "vmxnet3"
-  - networkName: "Dummy Network"
-    ethernetCardType: "vmxnet3"
-  - networkName: "Dummy Network"
-    ethernetCardType: "vmxnet3"
-  - networkName: "Dummy Network"
-    ethernetCardType: "vmxnet3"
+  network.interfaces:
+  - name: "GE1"
+    network: "Dummy Network"
+  - name: "GE2"
+    network: "Dummy Network"
+  - name: "GE3"
+    network: "VM Network"
   vmMetadata:
     configMapName: vce-ovfprops
     transport: OvfEnv
