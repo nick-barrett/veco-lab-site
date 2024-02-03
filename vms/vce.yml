@@ -1,13 +1,13 @@
 apiVersion: vmoperator.vmware.com/v1alpha1
 kind: VirtualMachine
 metadata:
-  name: vce-vm
+  name: new-vce-vm
   namespace: default
   annotations:
     vmoperator.vmware.com/image-supported-check: disable
 spec:
   className: guaranteed-small
-  imageName: 192.168.60.85:9000/edge-5.4.ova
+  imageName: 192.168.60.85:9000/edge-5.4-bios.ova
   powerState: poweredOn
   networkInterfaces:
   - networkName: "VM Network"
