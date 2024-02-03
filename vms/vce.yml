@@ -1,7 +1,7 @@
 apiVersion: vmoperator.vmware.com/v1alpha1
 kind: VirtualMachine
 metadata:
-  name: vce-vm-new
+  name: vce-vm
   namespace: default
   annotations:
     vmoperator.vmware.com/image-supported-check: disable
@@ -16,3 +16,37 @@ spec:
     ethernetCardType: "vmxnet3"
   - networkName: "VM Network"
     ethernetCardType: "vmxnet3"
+  - networkName: "Dummy Network"
+    ethernetCardType: "vmxnet3"
+  - networkName: "Dummy Network"
+    ethernetCardType: "vmxnet3"
+  - networkName: "Dummy Network"
+    ethernetCardType: "vmxnet3"
+  vmMetadata:
+    configMapName: vce-ovfprops
+    transport: OvfEnv
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: vce-ovfprops
+    namespace: default
+data:
+  instance-id: "id-ovf"
+  password: "passw0rd"
+  permit_root_login: "true"
+  velocloud.vce.activation_code: "DGXU-R28P-XZ2L-4C5Z"
+  velocloud.vce.vco: "vco12-usvi1.velocloud.net"
+  velocloud.vce.vco_ignore_cert_errors: "true"
+  eth0.macAddress: ""
+  eth0.ipAddress: ""
+  eth0.ipAllocationType: "DHCP"
+  eth1.macAddress: ""
+  eth1.ipAddress: ""
+  eth1.ipAllocationType: "DHCP"
+  eth2.macAddress: ""
+  eth2.ipAddress: ""
+  eth2.ipAllocationType: "DHCP"
+  eth3.macAddress: ""
+  eth3.ipAddress: ""
+  eth3.ipAllocationType: "DHCP"
