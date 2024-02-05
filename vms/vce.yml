@@ -10,9 +10,9 @@ spec:
   imageName: 192.168.60.85:9000/edge-5.4-kvm.ova
   powerState: poweredOn
   networkInterfaces:
-  - networkName: "VM Network"
-  - networkName: "VM Network"
-  - networkName: "VM Network"
+  - networkName: "Dummy Network"
+  - networkName: "Dummy Network"
+  - networkName: "Dummy Network"
   vmMetadata:
     configMapName: vce-props
     transport: CloudInit
