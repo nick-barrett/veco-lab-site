@@ -1,0 +1,33 @@
+apiVersion: vmoperator.vmware.com/v1alpha1
+kind: VirtualMachine
+metadata:
+  name: ubuntu-vm
+  namespace: default
+  annotations:
+    vmoperator.vmware.com/image-supported-check: disable
+spec:
+  className: guaranteed-small
+  imageName: https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.ova
+  powerState: poweredOn
+  networkInterfaces:
+  - networkName: "VCE LAN"
+  vmMetadata:
+    configMapName: ubuntu-props
+    transport: CloudInit
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: ubuntu-props
+    namespace: default
+data:
+  user-data: |
+    #cloud-config
+    users:
+      - name: nbarrett
+        gecos: Nick Barrett
+        sudo: ALL=(ALL) NOPASSWD:ALL
+        ssh_authorized_keys:
+          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC721B9GHDORoUdum4qBpHZMuqikiM3zApKTJOCDgxge37SPls2expR5ejrDaLyo+1teekIX5qdkOM2+AzJ42c6n3uqR+dha76BIRflJ0ItWY8G+USheIEbJrD4XgYPEFEvZQB/XGA8oRbiLYphtQX8ZhVtZxTrx39u4RiInNayYqnum+0tuIatvIBdzK7XfUDhpssgTnOBKrevADmCJA+Xc+tcCx6o6Eq7UriLnOGGMMaYtVgxjIfI07/XD6xEQm1Sexkwuoj2zxjRFsgbFvIySMEW88rXAEDvbui7Az+uZlxL4Y3Y3pfqFOHD4WGWJFNc3QaeG6/tM1ZwUd+xStV0TjDDPRyWL8amEcRa0RXPUUwW6ZTseWwXHUsk08ESWZie5LVdB+3kVjn04pa5DSJ+SM8sKuGWMfhr+RPsYs3fzoRyfxx+gyZI3z9UYzrfzbYtT5xD6LLTtSNPKKkgjb5X5kdtGiU6bbWfDxz6XH0VIdZN14GrNAXs+sPsu4WvCW0= nbarrett@nbarrett-a01.vmware.com
+        lock_passwd: false
+        passwd: "$6$9Gxx871Btt11PtzC$G83xYo3iAzKBbLpn3YdrJ6/r24nno5WpyVgr5YPDnC15eRCPEudDn8F3Cn/MAu1D76cBRHlv.tJhnSZ/bQbhf1"
