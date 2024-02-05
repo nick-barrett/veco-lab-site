@@ -7,7 +7,7 @@ metadata:
     vmoperator.vmware.com/image-supported-check: disable
 spec:
   className: guaranteed-small
-  imageName: https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.ova
+  imageName: cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.ova
   powerState: poweredOn
   networkInterfaces:
   - networkName: "VCE LAN"
