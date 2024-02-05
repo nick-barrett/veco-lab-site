@@ -23,8 +23,6 @@ metadata:
     name: vce-props
     namespace: default
 data:
-  metadata: |
-    instance-id: ecs-vce
   user-data: |
     #cloud-config
     password: passw0rd
