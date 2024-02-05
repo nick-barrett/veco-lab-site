@@ -1,7 +1,7 @@
 apiVersion: vmoperator.vmware.com/v1alpha1
 kind: VirtualMachine
 metadata:
-  name: vce-vm
+  name: new-vce-vm
   namespace: default
   annotations:
     vmoperator.vmware.com/image-supported-check: disable
@@ -23,6 +23,8 @@ metadata:
     name: vce-props
     namespace: default
 data:
+  meta-data: |
+    instance-id: ecs-vce
   user-data: |
     #cloud-config
     password: passw0rd
@@ -31,5 +33,5 @@ data:
     velocloud:
       vce:
         vco: vco12-usvi1.velocloud.net
-        activation_code: DGXU-R28P-XZ2L-4C5Z
+        activation_code: 3GVE-7KA2-X5J3-AVEN
         vco_ignore_cert_errors: true
