@@ -1,7 +1,7 @@
 apiVersion: vmoperator.vmware.com/v1alpha1
 kind: VirtualMachine
 metadata:
-  name: new-vce-vm
+  name: vce-vm
   namespace: default
   annotations:
     vmoperator.vmware.com/image-supported-check: disable
@@ -23,7 +23,7 @@ metadata:
     name: vce-props
     namespace: default
 data:
-  meta-data: |
+  metadata: |
     instance-id: ecs-vce
   user-data: |
     #cloud-config
