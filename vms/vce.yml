@@ -1,7 +1,7 @@
 apiVersion: vmoperator.vmware.com/v1alpha1
 kind: VirtualMachine
 metadata:
-  name: new-vce-vm
+  name: vce-vm
   namespace: default
   annotations:
     vmoperator.vmware.com/image-supported-check: disable
@@ -14,14 +14,14 @@ spec:
   - networkName: "Dummy Network"
   - networkName: "VM Network"
   vmMetadata:
-    configMapName: vce-props
+    configMapName: updated-vce-props
     transport: CloudInit
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-    name: vce-props
-    namespace: default
+  name: updated-vce-props
+  namespace: default
 data:
   user-data: |
     #cloud-config

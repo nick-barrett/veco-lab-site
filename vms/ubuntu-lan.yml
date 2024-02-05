@@ -18,8 +18,8 @@ spec:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-    name: ubuntu-props
-    namespace: default
+  name: ubuntu-props
+  namespace: default
 data:
   user-data: |
     #cloud-config
