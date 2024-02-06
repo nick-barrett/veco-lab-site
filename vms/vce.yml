@@ -7,7 +7,7 @@ metadata:
     vmoperator.vmware.com/image-supported-check: disable
 spec:
   className: guaranteed-small
-  imageName: 192.168.60.85:9000/edge-5.2.0.2-bios-with-disk.ova
+  imageName: 192.168.60.85:9000/edge-5.2.0.2.ova
   powerState: poweredOn
   networkInterfaces:
   - networkName: "VCE LAN"
