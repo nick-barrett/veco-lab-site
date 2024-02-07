@@ -27,4 +27,13 @@ metadata:
   name: vce-props
   namespace: default
 data:
-  user-data: I2Nsb3VkLWNvbmZpZwpwYXNzd29yZDogcGFzc3cwcmQKY2hwYXNzd2Q6IHsgZXhwaXJlOiBGYWxzZSB9CnNzaF9wd2F1dGg6IFRydWUKdmVsb2Nsb3VkOgogIHZjZToKICAgIHZjbzogdmNvMTItdXN2aTEudmVsb2Nsb3VkLm5ldAogICAgYWN0aXZhdGlvbl9jb2RlOiAzR1ZFLTdLQTItWDVKMy1BVkVOCiAgICB2Y29faWdub3JlX2NlcnRfZXJyb3JzOiB0cnVl
+  user-data: |
+    #cloud-config
+    password: passw0rd
+    chpasswd: { expire: False }
+    ssh_pwauth: True
+    velocloud:
+      vce:
+        vco: vco12-usvi1.velocloud.net
+        activation_code: 3GVE-7KA2-X5J3-AVEN
+        vco_ignore_cert_errors: true
