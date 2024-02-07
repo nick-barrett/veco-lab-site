@@ -1,13 +1,14 @@
 apiVersion: vmoperator.vmware.com/v1alpha1
 kind: VirtualMachine
 metadata:
-  name: new-vce-vm
+  name: vce-vm
   namespace: default
   annotations:
     vmoperator.vmware.com/image-supported-check: disable
+    vmoperator.vmware.com/cloudinit-type: cloudinitprep
 spec:
   className: guaranteed-small
-  imageName: 192.168.60.85:9000/edge-VC_VMDK-x86_64-5.2.0.2-10328-R5202-20231107-GA-125647-b452968bf3-updatable-ext4_RANDOM.ova
+  imageName: 192.168.60.85:9000/edge-VC_VMDK-x86_64-5.2.0.2-10328-R5202-20231107-GA-125647-b452968bf3-updatable-ext4.ova
   powerState: poweredOn
   networkInterfaces:
   - networkName: "VCE LAN"
@@ -18,7 +19,7 @@ spec:
   - networkName: "Dummy Network"
   vmMetadata:
     configMapName: vce-props
-    transport: OvfEnv
+    transport: CloudInit
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -26,47 +27,4 @@ metadata:
   name: vce-props
   namespace: default
 data:
-  instance-id: id-ovf
-  velocloud.vce.vco: vco12-usvi1.velocloud.net
-  velocloud.vce.activation_code: 3GVE-7KA2-X5J3-AVEN
-  velocloud.vce.vco_ignore_cert_errors: "true" 
-  velocloud.vce.dns1: 8.8.8.8
-  velocloud.vce.dns2: 8.8.4.4
-  eth0.macAddress: ""
-  eth1.macAddress: ""
-  eth2.ipAllocationType: "DHCP"
-  eth2.ipAddress: ""
-  eth2.subnetMask: ""
-  eth2.gatewayAddress: ""
-  eth2.ip6AllocationType: ""
-  eth2.ip6Address: ""
-  eth2.gateway6Address: ""
-  eth2.vlanId: ""
-  eth2.macAddress: ""
-  eth3.ipAllocationType: "DHCP"
-  eth3.ipAddress: ""
-  eth3.subnetMask: ""
-  eth3.gatewayAddress: ""
-  eth3.ip6AllocationType: ""
-  eth3.ip6Address: ""
-  eth3.gateway6Address: ""
-  eth3.vlanId: ""
-  eth3.macAddress: ""
-  eth4.ipAllocationType: "DHCP"
-  eth4.ipAddress: ""
-  eth4.subnetMask: ""
-  eth4.gatewayAddress: ""
-  eth4.ip6AllocationType: ""
-  eth4.ip6Address: ""
-  eth4.gateway6Address: ""
-  eth4.vlanId: ""
-  eth4.macAddress: ""
-  eth5.ipAllocationType: "DHCP"
-  eth5.ipAddress: ""
-  eth5.subnetMask: ""
-  eth5.gatewayAddress: ""
-  eth5.ip6AllocationType: ""
-  eth5.ip6Address: ""
-  eth5.gateway6Address: ""
-  eth5.vlanId: ""
-  eth5.macAddress: ""
+  user-data: I2Nsb3VkLWNvbmZpZwpwYXNzd29yZDogcGFzc3cwcmQKY2hwYXNzd2Q6IHsgZXhwaXJlOiBGYWxzZSB9CnNzaF9wd2F1dGg6IFRydWUKdmVsb2Nsb3VkOgogIHZjZToKICAgIHZjbzogdmNvMTItdXN2aTEudmVsb2Nsb3VkLm5ldAogICAgYWN0aXZhdGlvbl9jb2RlOiAzR1ZFLTdLQTItWDVKMy1BVkVOCiAgICB2Y29faWdub3JlX2NlcnRfZXJyb3JzOiB0cnVl
