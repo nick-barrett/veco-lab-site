@@ -1,11 +1,11 @@
 apiVersion: vmoperator.vmware.com/v1alpha1
 kind: VirtualMachine
 metadata:
-  name: vce-vm
+  name: new-vce-vm
   namespace: default
   annotations:
     vmoperator.vmware.com/image-supported-check: disable
-    vmoperator.vmware.com/cloudinit-type: cloudinitprep
+    vmoperator.vmware.com/cloudinit-type: guestinfo
 spec:
   className: guaranteed-small
   imageName: 192.168.60.85:9000/edge-VC_VMDK-x86_64-5.2.0.2-10328-R5202-20231107-GA-125647-b452968bf3-updatable-ext4.ova
