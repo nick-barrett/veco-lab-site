@@ -1,14 +1,14 @@
 apiVersion: vmoperator.vmware.com/v1alpha1
 kind: VirtualMachine
 metadata:
-  name: vce-vm
+  name: new-vce-vm
   namespace: default
   annotations:
     vmoperator.vmware.com/image-supported-check: disable
     vmoperator.vmware.com/cloudinit-type: guestinfo
 spec:
   className: guaranteed-small
-  imageName: 192.168.60.85:9000/edge-5.4.0.0-guestinfo-new.ova
+  imageName: 192.168.60.85:9000/VeloCloud-EdgeRooted.ova
   powerState: poweredOn
   networkInterfaces:
   - networkName: "VCE LAN"
@@ -29,7 +29,6 @@ metadata:
 data:
   user-data: |
     #cloud-config
-    password: passw0rd
     chpasswd: { expire: False }
     ssh_pwauth: True
     velocloud:
