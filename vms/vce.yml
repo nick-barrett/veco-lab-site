@@ -8,7 +8,7 @@ metadata:
     vmoperator.vmware.com/cloudinit-type: guestinfo
 spec:
   className: guaranteed-small
-  imageName: 192.168.60.85:9000/VeloCloud-EdgeRooted.ova
+  imageName: 192.168.60.85:9000/vce-custom-ci.ova
   powerState: poweredOn
   networkInterfaces:
   - networkName: "VCE LAN"
