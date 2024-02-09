@@ -26,7 +26,8 @@ metadata:
   name: vce-prop
   namespace: default
 data:
-  userdata: |
+  instance-id: id-ovf
+  user-data: |
     #cloud-config
     chpasswd: { expire: False }
     ssh_pwauth: True
@@ -35,3 +36,4 @@ data:
         vco: vco12-usvi1.velocloud.net
         activation_code: 3GVE-7KA2-X5J3-AVEN
         vco_ignore_cert_errors: true
+  hostname: new-vce
