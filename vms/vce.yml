@@ -10,7 +10,7 @@ metadata:
 spec:
   className: guaranteed-small
   imageName: 192.168.60.85:9000/VeloCloud-EdgeRooted.ova
-  powerState: poweredOn
+  powerState: poweredOff
   networkInterfaces:
   - networkName: "VCE LAN"
   - networkName: "Dummy Network"
