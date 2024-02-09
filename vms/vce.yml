@@ -1,7 +1,9 @@
+# need to patch /usr/lib/python3.9/site-packages/cloudinit/sources/DataSourceVCOVF.py
+# change vmware-guestd to use vmware-rpctool and uncomment...
 apiVersion: vmoperator.vmware.com/v1alpha1
 kind: VirtualMachine
 metadata:
-  name: new-vce-vm
+  name: vce-vm
   namespace: default
   annotations:
     vmoperator.vmware.com/image-supported-check: disable
@@ -16,9 +18,6 @@ spec:
   - networkName: "Dummy Network"
   - networkName: "Dummy Network"
   - networkName: "Dummy Network"
-  vmMetadata:
-    configMapName: vce-prop
-    transport: OvfEnv
 ---
 apiVersion: v1
 kind: ConfigMap
