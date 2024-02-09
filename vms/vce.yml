@@ -1,14 +1,13 @@
 apiVersion: vmoperator.vmware.com/v1alpha1
 kind: VirtualMachine
 metadata:
-  name: new-vce-vm
+  name: vce-vm
   namespace: default
   annotations:
     vmoperator.vmware.com/image-supported-check: disable
-    vmoperator.vmware.com/cloudinit-type: guestinfo
 spec:
   className: guaranteed-small
-  imageName: 192.168.60.85:9000/vce-custom-ci-next.ova
+  imageName: 192.168.60.85:9000/VeloCloud-EdgeRooted.ova
   powerState: poweredOn
   networkInterfaces:
   - networkName: "VCE LAN"
@@ -19,7 +18,7 @@ spec:
   - networkName: "Dummy Network"
   vmMetadata:
     configMapName: vce-prop
-    transport: CloudInit
+    transport: OvfEnv
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -27,7 +26,7 @@ metadata:
   name: vce-prop
   namespace: default
 data:
-  user-data: |
+  userdata: |
     #cloud-config
     chpasswd: { expire: False }
     ssh_pwauth: True
