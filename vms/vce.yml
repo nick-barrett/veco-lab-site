@@ -22,7 +22,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: new-cloud-init-pvc
+  name: cloud-init-pvc
   namespace: default
 spec:
   accessModes:
@@ -56,7 +56,7 @@ spec:
   volumes:
   - name: cloudinit
     persistentVolumeClaim: 
-      claimName: new-cloud-init-pvc
+      claimName: cloud-init-pvc
 ---
 apiVersion: v1
 kind: ConfigMap
