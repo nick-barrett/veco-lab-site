@@ -13,7 +13,7 @@ parameters:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: cloud-init-pvc
+  name: new-cloud-init-pvc
   namespace: default
 spec:
   accessModes:
@@ -21,7 +21,7 @@ spec:
   volumeMode: Block
   resources:
     requests:
-      storage: 10Mi
+      storage: 1Gi
   storageClassName: cns-storageclass
 # todo: 
 # - mount secrets for VCO
@@ -48,7 +48,7 @@ spec:
   volumes:
   - name: cloudinit
     persistentVolumeClaim: 
-      claimName: cloud-init-pvc
+      claimName: new-cloud-init-pvc
 ---
 apiVersion: v1
 kind: ConfigMap
