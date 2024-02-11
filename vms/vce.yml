@@ -11,21 +11,6 @@ parameters:
   datastoreurl: "ds:///vmfs/volumes/65bdbe49-445bbede-b8d9-005056a99c30/"
 ---
 apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: cloud-init-pv
-  namespace: default
-spec:
-  capacity:
-    storage: 10Gi
-  accessModes:
-    - ReadWriteOnce
-  volumeMode: Block
-  persistentVolumeReclaimPolicy: Retain
-  vsphereVolume:
-    volumePath: "/datastore1/test.vmdk"
----
-apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: cloud-init-pvc
@@ -37,6 +22,7 @@ spec:
   resources:
     requests:
       storage: 10Mi
+  storageClassName: cns-storageclass
 # todo: 
 # - mount secrets for VCO
 # - make a container image to generate ISO in PVC
@@ -44,7 +30,7 @@ spec:
 apiVersion: vmoperator.vmware.com/v1alpha1
 kind: VirtualMachine
 metadata:
-  name: new-vce-vm
+  name: vce-vm
   namespace: default
   annotations:
     vmoperator.vmware.com/image-supported-check: disable
@@ -62,7 +48,7 @@ spec:
   volumes:
   - name: cloudinit
     persistentVolumeClaim: 
-      claimName: cloud-init-pvc-2
+      claimName: cloud-init-pvc
 ---
 apiVersion: v1
 kind: ConfigMap
