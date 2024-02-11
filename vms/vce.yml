@@ -23,7 +23,7 @@ spec:
   volumeMode: Block
   resources:
     requests:
-      storage: 1Gi
+      storage: 10Gi
 # todo: 
 # - mount secrets for VCO
 # - make a container image to generate ISO in PVC
