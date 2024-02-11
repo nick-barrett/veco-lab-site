@@ -5,7 +5,7 @@ metadata:
 provisioner: kubernetes.io/vsphere-volume 
 parameters:
     diskformat: thin 
-    datastore: "datastore1" 
+    datastore: "65bdbe49-445bbede-b8d9-005056a99c30" 
 reclaimPolicy: Delete
 ---
 apiVersion: v1
