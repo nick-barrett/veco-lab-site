@@ -9,6 +9,19 @@ parameters:
     datastoreurl: "ds:///vmfs/volumes/65bdbe49-445bbede-b8d9-005056a99c30/" 
 reclaimPolicy: Delete
 ---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: vsphere-pvc-test
+  namespace: default
+spec:
+  storageClassName: vsphere-sc
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
 apiVersion: vmoperator.vmware.com/v1alpha1
 kind: VirtualMachine
 metadata:
