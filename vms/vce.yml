@@ -1,15 +1,8 @@
-kind: StorageClass
-apiVersion: storage.k8s.io/v1
-metadata:
-  name: thin-disk
-  annotations:
-    storageclass.kubernetes.io/is-default-class: "true"
-provisioner: kubernetes.io/vsphere-volume
----
 apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: ci-pv-1
+  namespace: default
 spec:
   capacity:
     storage: 10Gi
@@ -22,7 +15,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: cloud-init-pvc
+  name: cloud-init-pvc-c
   namespace: default
 spec:
   accessModes:
@@ -38,7 +31,7 @@ spec:
 apiVersion: vmoperator.vmware.com/v1alpha1
 kind: VirtualMachine
 metadata:
-  name: new-vce-vm
+  name: vce-vm
   namespace: default
   annotations:
     vmoperator.vmware.com/image-supported-check: disable
@@ -56,7 +49,7 @@ spec:
   volumes:
   - name: cloudinit
     persistentVolumeClaim: 
-      claimName: cloud-init-pvc
+      claimName: cloud-init-pvc-c
 ---
 apiVersion: v1
 kind: ConfigMap
