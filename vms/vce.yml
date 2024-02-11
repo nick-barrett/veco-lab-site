@@ -2,28 +2,12 @@ kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
   name: vsphere-standard
-provisioner: kubernetes.io/vsphere-volume 
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "true"
+provisioner: csi.vsphere.vmware.com
 parameters:
-    diskformat: thin 
-    datastore: "65bdbe49-445bbede-b8d9-005056a99c30" 
+    datastoreurl: "ds:///vmfs/volumes/65bdbe49-445bbede-b8d9-005056a99c30/" 
 reclaimPolicy: Delete
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: cloud-init-pvc-a
-  namespace: default
-spec:
-  storageClassName: vsphere-standard
-  accessModes:
-    - ReadWriteOnce
-  volumeMode: Block
-  resources:
-    requests:
-      storage: 10Gi
-# todo: 
-# - mount secrets for VCO
-# - make a container image to generate ISO in PVC
 ---
 apiVersion: vmoperator.vmware.com/v1alpha1
 kind: VirtualMachine
