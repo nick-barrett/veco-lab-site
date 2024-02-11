@@ -31,7 +31,7 @@ spec:
 apiVersion: vmoperator.vmware.com/v1alpha1
 kind: VirtualMachine
 metadata:
-  name: vce-vm
+  name: new-vce-vm
   namespace: default
   annotations:
     vmoperator.vmware.com/image-supported-check: disable
@@ -49,7 +49,7 @@ spec:
   volumes:
   - name: cloudinit
     persistentVolumeClaim: 
-      claimName: cloud-init-pvc-c
+      claimName: cloud-init-pvc-d
 ---
 apiVersion: v1
 kind: ConfigMap
