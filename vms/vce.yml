@@ -1,14 +1,15 @@
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
+apiVersion: v1
+kind: PersistentVolume
 metadata:
-  name: cns-storageclass
-  namespace: default
-  annotations:
-      storageclass.kubernetes.io/is-default-class: "true"
-provisioner: csi.vsphere.vmware.com
-allowVolumeExpansion: true
-parameters:
-  datastoreurl: "ds:///vmfs/volumes/65bdbe49-445bbede-b8d9-005056a99c30/"
+  name: ci-pv-1
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  vsphereVolume:
+    volumePath: "[volume1] pvc/ci-pv-1"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -22,7 +23,6 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  storageClassName: cns-storageclass
 # todo: 
 # - mount secrets for VCO
 # - make a container image to generate ISO in PVC
@@ -30,7 +30,7 @@ spec:
 apiVersion: vmoperator.vmware.com/v1alpha1
 kind: VirtualMachine
 metadata:
-  name: vce-vm
+  name: new-vce-vm
   namespace: default
   annotations:
     vmoperator.vmware.com/image-supported-check: disable
