@@ -32,7 +32,7 @@ spec:
 apiVersion: vmoperator.vmware.com/v1alpha1
 kind: VirtualMachine
 metadata:
-  name: new-vce-vm
+  name: vce-vm
   namespace: default
   annotations:
     vmoperator.vmware.com/image-supported-check: disable
