@@ -1,4 +1,17 @@
 apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: cloud-init-pv
+  namespace: default
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Block
+  persistentVolumeReclaimPolicy: Retain
+---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: cloud-init-pvc
