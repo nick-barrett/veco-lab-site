@@ -15,7 +15,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: cloud-init-pvc-c
+  name: cloud-init-pvc-d
   namespace: default
 spec:
   accessModes:
