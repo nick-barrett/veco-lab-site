@@ -14,6 +14,17 @@ provisioner: kubernetes.io/no-provisioner
 volumeBindingMode: WaitForFirstConsumer
 ---
 apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: example-pv
+spec:
+  accessModes: ["ReadWriteOnce"]
+  capacity:
+    storage: 100Mi
+  storageClassName: "websrv-local-storage"
+  volumeMode: Filesystem
+---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: websrv-pvc
