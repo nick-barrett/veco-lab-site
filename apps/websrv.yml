@@ -5,6 +5,27 @@ metadata:
   labels:
     name: websrv
 ---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: websrv-local-storage
+  namespace: websrv
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: websrv-pvc
+  namespace: websrv
+spec:
+  accessModes: ["ReadWriteOnce"]
+  storageClassName: "websrv-local-storage"
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 100Mi
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -43,10 +64,15 @@ spec:
         volumeMounts:
           - mountPath: /usr/share/nginx/html
             name: nginx-index-file
+          - mountPath: /test-mount
+            name: pvc-mount
       volumes:
         - name: nginx-index-file
           configMap:
             name: index-html-configmap
+        - name: pvc-mount
+          persistentVolumeClaim:
+            claimName: websrv-pvc
 ---
 apiVersion: v1
 kind: Service
