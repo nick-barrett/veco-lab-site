@@ -1,16 +1,22 @@
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: local-storage
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: cloudinit-pvc
+  name: cloudinit-pvc-new
   namespace: default
 spec:
-  accessModes:
-    - ReadWriteOnce
+  accessModes: ["ReadWriteOnce"]
   resources:
     requests:
       storage: 100Mi
-  volumeMode: Filesystem
+  volumeMode: Block
+  storageClassName: local-storage
 ---
 apiVersion: vmoperator.vmware.com/v1alpha1
 kind: VirtualMachine
