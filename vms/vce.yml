@@ -1,21 +1,10 @@
-kind: StorageClass
-apiVersion: storage.k8s.io/v1
-metadata:
-  name: vsphere-sc
-  annotations:
-    storageclass.kubernetes.io/is-default-class: "true"
-provisioner: csi.vsphere.vmware.com
-parameters:
-    datastoreurl: "ds:///vmfs/volumes/65bdbe49-445bbede-b8d9-005056a99c30/" 
-reclaimPolicy: Delete
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: vsphere-pvc-test
+  name: pvc-test
   namespace: default
 spec:
-  storageClassName: vsphere-sc
   accessModes:
     - ReadWriteOnce
   resources:
