@@ -36,6 +36,10 @@ spec:
   - networkName: "Dummy Network"
   - networkName: "Dummy Network"
   - networkName: "Dummy Network"
+  volumes:
+  - name: cloudinit
+    persistentVolumeClaim:
+      claimName: cloudinit-pvc-new
 ---
 apiVersion: v1
 kind: ConfigMap
