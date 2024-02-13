@@ -15,7 +15,7 @@ metadata:
   namespace: flux-user
 spec:
   targetNamespace: ingress-controller
-  interval: 1m0s
+  interval: 60m0s
   chart:
     spec:
       chart: ingress
@@ -23,7 +23,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: kong
-      interval: 1m0s
+      interval: 60m0s
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: GatewayClass
