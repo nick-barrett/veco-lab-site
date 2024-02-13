@@ -60,7 +60,7 @@ spec:
   - protocol: TCP
     port: 80
 ---
-apiVersion: gateway.networking.k8s.io/v1alpha2
+apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: new-websrv
@@ -71,12 +71,6 @@ spec:
   - name: nginx-gw
     port: 80
     protocol: HTTP
-  addresses:
-  - value: 192.168.60.205
-    type: IPAddress
-  infrastructure:
-    annotations:
-      metallb.universe.tf/loadBalancerIPs: 192.168.60.205
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
@@ -87,7 +81,7 @@ spec:
   parentRefs:
   - name: new-websrv
   hostnames:
-  - websrv.192.168.60.205.nip.io
+  - websrv.192.168.60.201.nip.io
   rules:
   - backendRefs:
     - name: websrv-service
