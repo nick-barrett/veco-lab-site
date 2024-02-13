@@ -35,14 +35,14 @@ metadata:
   name: k8s-gateway-api-extension
   namespace: flux-user
 spec:
-  interval: 1m
+  interval: 1m0s
   sourceRef:
     kind: GitRepository
     name: k8s-gateway-api
     namespace: flux-user
   path: "./config/crd"
   prune: true
-  timeout: 1m
+  timeout: 1m0s
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -50,14 +50,16 @@ metadata:
   name: infra-services
   namespace: flux-user
 spec:
-  interval: 1m
+  interval: 1m0s
   sourceRef:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
   path: "./infra-services"
   prune: true
-  timeout: 1m
+  timeout: 1m0s
+  dependsOn:
+    - name: k8s-gateway-api-extension
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -65,14 +67,14 @@ metadata:
   name: infra-cfg
   namespace: flux-user
 spec:
-  interval: 1m
+  interval: 1m0s
   sourceRef:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
   path: "./infra-cfg"
   prune: true
-  timeout: 1m
+  timeout: 1m0s
   dependsOn:
     - name: infra-services
 ---
@@ -82,14 +84,14 @@ metadata:
   name: apps
   namespace: flux-user
 spec:
-  interval: 1m
+  interval: 1m0s
   sourceRef:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
   path: "./apps"
   prune: true
-  timeout: 1m
+  timeout: 1m0s
   dependsOn:
     - name: infra-cfg
 ---
@@ -99,11 +101,11 @@ metadata:
   name: vms
   namespace: flux-user
 spec:
-  interval: 1m
+  interval: 1m0s
   sourceRef:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
   path: "./vms"
   prune: true
-  timeout: 1m
+  timeout: 1m0s
