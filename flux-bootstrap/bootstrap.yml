@@ -40,7 +40,7 @@ spec:
     kind: GitRepository
     name: k8s-gateway-api
     namespace: flux-user
-  path: "./config/crd"
+  path: "./config/crd/experimental"
   prune: true
   timeout: 1m0s
 ---
