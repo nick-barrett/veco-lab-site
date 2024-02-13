@@ -81,7 +81,7 @@ spec:
   parentRefs:
   - name: websrv
   hostnames:
-  - websrv.192.168.60.202.nip.io
+  - websrv.192.168.60.201.nip.io
   rules:
   - backendRefs:
     - name: websrv-service
