@@ -65,14 +65,15 @@ kind: Gateway
 metadata:
   name: websrv
   namespace: websrv
-  annotations:
-    metallb.universe.tf/loadBalancerIPs: 192.168.60.205
 spec:
   gatewayClassName: kong
   listeners:
   - name: nginx-gw
     port: 80
     protocol: HTTP
+  infrastructure:
+    annotations:
+      metallb.universe.tf/loadBalancerIPs: 192.168.60.205
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
