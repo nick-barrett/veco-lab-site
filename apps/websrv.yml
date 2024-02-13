@@ -63,7 +63,7 @@ spec:
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
-  name: websrv
+  name: new-websrv
   namespace: websrv
 spec:
   gatewayClassName: kong
@@ -82,7 +82,7 @@ metadata:
   namespace: websrv
 spec:
   parentRefs:
-  - name: websrv
+  - name: new-websrv
   hostnames:
   - websrv.192.168.60.205.nip.io
   rules:
