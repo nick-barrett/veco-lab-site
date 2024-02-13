@@ -66,7 +66,7 @@ metadata:
   name: websrv
   namespace: websrv
   annotations:
-    metallb.universe.tf/loadBalancerIPs: 192.168.60.201
+    metallb.universe.tf/loadBalancerIPs: 192.168.60.205
 spec:
   gatewayClassName: kong
   listeners:
@@ -83,7 +83,7 @@ spec:
   parentRefs:
   - name: websrv
   hostnames:
-  - websrv.192.168.60.201.nip.io
+  - websrv.192.168.60.205.nip.io
   rules:
   - backendRefs:
     - name: websrv-service
