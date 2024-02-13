@@ -1,0 +1,31 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: haproxy-ingress
+  namespace: flux-user
+spec:
+  interval: 1m0s
+  url: https://haproxy-ingress.github.io/charts
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: haproxy-ingress
+  namespace: flux-user
+spec:
+  targetNamespace: ingress-controller
+  interval: 1m0s
+  chart:
+    spec:
+      chart: haproxy-ingress
+      version: '0.14.6'
+      sourceRef:
+        kind: HelmRepository
+        name: haproxy-ingress
+      interval: 1m0s
+  values:
+    controller:
+      hostNetwork: false
+      ingressClassResource:
+        enabled: true
