@@ -83,20 +83,3 @@ spec:
   path: "./vms"
   prune: true
   timeout: 1m
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: vms-config
-  namespace: flux-user
-spec:
-  dependsOn:
-    - name: vms
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-    namespace: flux-system
-  path: "./vms-post-deploy/"
-  interval: 1m
-  timeout: 1m
-  prune: true
