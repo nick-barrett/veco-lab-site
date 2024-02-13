@@ -29,3 +29,10 @@ spec:
       hostNetwork: false
       ingressClassResource:
         enabled: true
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: GatewayClass
+metadata:
+  name: haproxy
+spec:
+  controllerName: haproxy-ingress.github.io/controller

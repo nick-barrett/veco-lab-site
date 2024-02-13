@@ -60,20 +60,29 @@ spec:
   - protocol: TCP
     port: 80
 ---
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: Gateway
 metadata:
-  name: websrv-ing
+  name: websrv
   namespace: websrv
 spec:
+  gatewayClassName: haproxy
+  listeners:
+  - name: nginx-gw
+    port: 80
+    protocol: HTTP
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: HTTPRoute
+metadata:
+  name: websrv
+  namespace: websrv
+spec:
+  parentRefs:
+  - name: websrv
+  hostnames:
+  - websrv.192.168.60.210.nip.io
   rules:
-  - host: websrv.192.168.60.210.nip.io
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: nginx-service
-            port:
-              number: 80
+  - backendRefs:
+    - name: websrv-service
+      port: 80
