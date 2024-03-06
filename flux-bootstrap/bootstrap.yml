@@ -24,7 +24,7 @@ metadata:
   name: k8s-gateway-api
   namespace: flux-user
 spec:
-  interval: 1m0s
+  interval: 12h
   url: https://github.com/kubernetes-sigs/gateway-api
   ref:
     tag: v1.0.0
@@ -35,14 +35,13 @@ metadata:
   name: k8s-gateway-api-extension
   namespace: flux-user
 spec:
-  interval: 1m0s
+  interval: 12h
   sourceRef:
     kind: GitRepository
     name: k8s-gateway-api
     namespace: flux-user
   path: "./config/crd"
   prune: true
-  timeout: 1m0s
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -67,7 +66,7 @@ metadata:
   name: infra-cfg
   namespace: flux-user
 spec:
-  interval: 1m0s
+  interval: 5m0s
   sourceRef:
     kind: GitRepository
     name: flux-system
