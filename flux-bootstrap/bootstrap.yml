@@ -73,6 +73,7 @@ spec:
     namespace: flux-system
   path: "./infra-cfg"
   prune: true
+  timeout: 1m0s
   dependsOn:
     - name: infra-services
 ---
