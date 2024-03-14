@@ -19,12 +19,12 @@ spec:
       dynamicDirectPathIODevices:
         - vendorID: 0x15ad
           deviceID: 0x077a
-          customLabel: usb controller
+          customLabel: usb controller bump
 ---
 apiVersion: vmoperator.vmware.com/v1alpha1
 kind: VirtualMachine
 metadata:
-  name: ubuntu-vm
+  name: ubuntu-vm-new
   namespace: default
   annotations:
     vmoperator.vmware.com/image-supported-check: disable
