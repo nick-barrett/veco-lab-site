@@ -6,7 +6,7 @@ metadata:
 spec:
   hardware:
     cpus: 2
-    memory: 2G
+    memory: 2Gi
     devices:
       dynamicDirectPathIODevices:
         - vendorID: 0x0001
