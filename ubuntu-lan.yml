@@ -9,6 +9,9 @@ spec:
       requests:
         cpu: 2
         memory: 2Gi
+      limits:
+        cpu: 2
+        memory: 2Gi
   hardware:
     cpus: 2
     memory: 2Gi
