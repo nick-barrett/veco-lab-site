@@ -9,8 +9,9 @@ spec:
     memory: 2Gi
     devices:
       dynamicDirectPathIODevices:
-        - vendorID: 0x0001
-          deviceID: 0x0100
+        - vendorID: 0x15ad
+          deviceID: 0x077a
+          customLabel: usb controller
 ---
 apiVersion: vmoperator.vmware.com/v1alpha1
 kind: VirtualMachine
