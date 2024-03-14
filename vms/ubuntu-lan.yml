@@ -1,4 +1,18 @@
 apiVersion: vmoperator.vmware.com/v1alpha1
+kind: VirtualMachineClass
+metadata:
+  name: ubuntu-usb-vm
+  namespace: default
+spec:
+  hardware:
+    cpus: 2
+    memory: 2G
+    devices:
+      dynamicDirectPathIODevices:
+        - vendorID: 0x0001
+          deviceID: 0x0100
+---
+apiVersion: vmoperator.vmware.com/v1alpha1
 kind: VirtualMachine
 metadata:
   name: ubuntu-vm
@@ -6,7 +20,7 @@ metadata:
   annotations:
     vmoperator.vmware.com/image-supported-check: disable
 spec:
-  className: guaranteed-small
+  className: ubuntu-usb-vm
   imageName: cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.ova
   powerState: poweredOn
   networkInterfaces:
