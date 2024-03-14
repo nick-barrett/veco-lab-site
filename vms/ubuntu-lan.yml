@@ -23,8 +23,6 @@ spec:
   className: ubuntu-usb-vm
   imageName: cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.ova
   powerState: poweredOn
-  networkInterfaces:
-  - networkName: "VCE LAN"
   vmMetadata:
     configMapName: ubuntu-props
     transport: CloudInit
