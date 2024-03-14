@@ -27,8 +27,6 @@ spec:
   path: "./infra-services"
   prune: true
   timeout: 1m0s
-  dependsOn:
-    - name: k8s-gateway-api-extension
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
