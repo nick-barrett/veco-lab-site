@@ -7,42 +7,12 @@ metadata:
     pod-security.kubernetes.io/enforce: privileged
     pod-security.kubernetes.io/audit: privileged
     pod-security.kubernetes.io/warn: privileged
-#---
-#apiVersion: v1
-#kind: Namespace
-#metadata:
-#  name: ingress-controller
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: flux-user
-#---
-#apiVersion: source.toolkit.fluxcd.io/v1
-#kind: GitRepository
-#metadata:
-#  name: k8s-gateway-api
-#  namespace: flux-user
-#spec:
-#  interval: 12h
-#  url: https://github.com/kubernetes-sigs/gateway-api
-#  ref:
-#    tag: v1.0.0
 ---
-#apiVersion: kustomize.toolkit.fluxcd.io/v1
-#kind: Kustomization
-#metadata:
-#  name: k8s-gateway-api-extension
-#  namespace: flux-user
-#spec:
-#  interval: 12h
-#  sourceRef:
-#    kind: GitRepository
-#    name: k8s-gateway-api
-#    namespace: flux-user
-#  path: "./config/crd"
-#  prune: true
-#---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
