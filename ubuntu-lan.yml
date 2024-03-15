@@ -1,20 +1,9 @@
 apiVersion: vmoperator.vmware.com/v1alpha1
 kind: VirtualMachineClass
 metadata:
-  name: ubuntu-usb-vm
+  name: ubuntu-usb-vm-001
   namespace: default
 spec:
-  policies:
-    resources:
-      requests:
-        cpu: 2
-        memory: 2Gi
-      limits:
-        cpu: 2
-        memory: 2Gi
-  hardware:
-    cpus: 2
-    memory: 2Gi
   configSpec:
     {
       "deviceChange": [
@@ -47,7 +36,7 @@ metadata:
   annotations:
     vmoperator.vmware.com/image-supported-check: disable
 spec:
-  className: ubuntu-usb-vm
+  className: ubuntu-usb-vm-001
   imageName: cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.ova
   powerState: poweredOn
   networkInterfaces:
