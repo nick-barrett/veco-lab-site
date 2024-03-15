@@ -36,7 +36,7 @@ spec:
           }
         }
       ],
-      "operation": "edit"
+      "operation": "add"
     }
 ---
 apiVersion: vmoperator.vmware.com/v1alpha1
