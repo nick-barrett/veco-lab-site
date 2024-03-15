@@ -31,7 +31,7 @@ spec:
 apiVersion: vmoperator.vmware.com/v1alpha1
 kind: VirtualMachine
 metadata:
-  name: ubuntu-vm-001
+  name: ubuntu-vm-002
   namespace: default
   annotations:
     vmoperator.vmware.com/image-supported-check: disable
