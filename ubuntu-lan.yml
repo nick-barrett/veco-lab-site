@@ -15,11 +15,29 @@ spec:
   hardware:
     cpus: 2
     memory: 2Gi
-    devices:
-      dynamicDirectPathIODevices:
-        - vendorID: 0x15ad
-          deviceID: 0x077a
-          customLabel: usb controller bump
+  configSpec: |
+    {
+      "deviceChange": [
+        {
+          "device": {
+            "_typeName": "VirtualUSB",
+            "key": 100,
+            "connected": true,
+            "vendor": 0x0e0f,
+            "product": 0x8003 
+          }
+        },
+        {
+          "device": {
+            "_typeName": "VirtualUSBXHCIController",
+            "key": 99,
+            "autoConnectDevices": true,
+            "busNumber": 10
+          }
+        }
+      ],
+      "operation": "edit"
+    }
 ---
 apiVersion: vmoperator.vmware.com/v1alpha1
 kind: VirtualMachine
