@@ -1,7 +1,7 @@
 apiVersion: vmoperator.vmware.com/v1alpha1
 kind: VirtualMachineClass
 metadata:
-  name: ubuntu-usb-vm
+  name: ubuntu-usb-vm-001
   namespace: default
 spec:
   policies:
